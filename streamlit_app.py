@@ -16,7 +16,7 @@ my_fruit_list = pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/da
 #streamlit.dataframe(my_fruit_list)
 
 # 사용자가 상호작용을 할 수 있도록 다중 선택이라는 사용자 대화형 위젯 추가
-streamlit.multiselect('Pick some fruits:", list(my_fruit_list.index))
+streamlit.multiselect('Pick some fruits:', list(my_fruit_list.index))
 
 # 페이지에 table 보여주기
 streamlit.dataframe(my_fruit_list)
