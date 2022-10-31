@@ -17,7 +17,7 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 
 # fruits_selected 라는 변수에 선택한 과일 목록을 넣고, 해당 과일의 행을 가져오도록 설정
 fruits_selected = streamlit.multiselect('Pick some fruits:', list(my_fruit_list.index), ['Avocado', 'Strawberries'])
-fruits_to_show = my_fruit_list.loc[fruit_selected]
+fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 # 선택한 과일에 대한 행만 보여주기
 streamlit.dataframe(fruits_to_show)
