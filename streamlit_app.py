@@ -15,8 +15,9 @@ import pandas as pd
 my_fruit_list = pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt')
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
-# 사용자가 상호작용을 할 수 있도록 다중 선택이라는 사용자 대화형 위젯 추가
-streamlit.multiselect('Pick some fruits:', list(my_fruit_list.index), ['Avocado', 'Strawberries'])
+# fruits_selected 라는 변수에 선택한 과일 목록을 넣고, 해당 과일의 행을 가져오도록 설정
+fruits_selected = streamlit.multiselect('Pick some fruits:', list(my_fruit_list.index), ['Avocado', 'Strawberries'])
+fruits_to_show = my_fruit_list.loc[fruit_selected]
 
-# 페이지에 table 보여주기
-streamlit.dataframe(my_fruit_list)
+# 선택한 과일에 대한 행만 보여주기
+streamlit.dataframe(fruits_to_show)
