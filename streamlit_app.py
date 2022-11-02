@@ -26,9 +26,7 @@ streamlit.dataframe(fruits_to_show)
 streamlit.header('Fruityvice Fruit Advice')
 
 import requests
-fruityvice_response = requests.get('https://fruityvice.com/api/fruit/watermelon')
-streamlit.text(fruityvice_response.json()) # 그냥 json 형태로 보여줌
-
+fruityvice_response = requests.get('https://fruityvice.com/api/fruit/'+'watermelon')
 # json normalization
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # 테이블 형태로 보여주기
