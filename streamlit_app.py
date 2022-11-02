@@ -33,3 +33,5 @@ fruityvice_response = requests.get('https://fruityvice.com/api/fruit/' + fruit_c
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # 테이블 형태로 보여주기
 streamlit.dataframe(fruityvice_normalized)
+
+import snowflake.connector
