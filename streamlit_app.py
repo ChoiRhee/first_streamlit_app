@@ -26,16 +26,17 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 # fruityvice api response로 새로운 섹션 생성
-streamlit.header('Fruityvice Fruit Advice')
-fruit_choice = streamlit.text_input('What fruit would you like information about?', 'Kiwi')
-streamlit.write('The user entered', fruit_choice)
-
-# import requests
-fruityvice_response = requests.get('https://fruityvice.com/api/fruit/' + fruit_choice)
-# json normalization
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-# 테이블 형태로 보여주기
-streamlit.dataframe(fruityvice_normalized)
+streamlit.header('Fruityvice Fruit Advice!')
+try:
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
+  if not fruit_choice:
+    streamlit.error('Please select a fruit to get information.')
+  else:
+    fruityvice_response = requests.get('https://fruityvice.com/api/fruit/' + fruit_choice)
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    streamlit.dataframe(fruityvice_normalized)
+except URLError as e:
+  streamlit.error()
 
 # SNOWFLAKE에 원할 때만 데이터를 전송할 수 있도록 STOP 설정
 streamlit.stop()
