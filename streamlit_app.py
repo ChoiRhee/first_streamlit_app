@@ -21,3 +21,8 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 # 선택한 과일에 대한 행만 보여주기
 streamlit.dataframe(fruits_to_show)
+
+# fruityvice api response로 새로운 섹션 생성
+import requests
+fruityvice_response = requests.get('https://fruityvice.com/api/fruit/watermelon')
+streamlit.text(fruityvice_response)
